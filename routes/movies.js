@@ -24,7 +24,17 @@ router.post('/', async (req, res) => {
         res.status(500).json({ message: err.message })
     }
 })
-
+// deletes a user
+router.delete('/', async (req, res) => {
+    try {
+        await movie.remove({
+            "username": req.body.username
+        })
+        res.status(200).json({ message: 'User deleted'})
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+})
 
 
 
