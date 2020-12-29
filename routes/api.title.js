@@ -1,22 +1,22 @@
 const express = require('express');
+const axios = require('axios')
 const router = express.Router();
-const axios = require('axios');
 require('dotenv').config();
-// gets data from the movie database api
-// about queried actor/actress
+
 router.get('/', (req, res) => {
-    let personName = req.body.query;
+    // console.log('req query title get', req.query.title);
+    let movieTitle = req.body.query;
     axios({
         method: 'GET',
-        url: 'https://api.themoviedb.org/3/search/person',
+        url: 'https://api.themoviedb.org/3/search/movie',
         params: {
-        api_key: process.env.API_KEY,
-        query: personName,
-        page: 1
+            api_key: process.env.API_KEY,
+            query: movieTitle,
+            page: 1
         }
     })
     .then(response => {
-        console.log('res', response.data.results);
+        // console.log('res data data', response.data.results);
         res.send(response.data.results)
     })
     .catch(error => {
