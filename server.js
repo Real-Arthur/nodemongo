@@ -24,5 +24,8 @@ app.use('/api/cast', castRouter)
 // route /api/title search the movie database for movie by title
 const titleRouter = require('./routes/api.title')
 app.use('/api/title', titleRouter)
+// route /api/details search the movie database for details about a movie by movie id
+const detailsRouter = require('./routes/api.details')
+app.use('/api/details', detailsRouter)
 // connect to port 3000 with confirmation log
 app.listen(3000, () => console.log('server started'))
